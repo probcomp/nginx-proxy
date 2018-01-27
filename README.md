@@ -8,9 +8,9 @@ sudo security add-trusted-cert -d -r trustRoot \
         -k /Library/Keychains/System.keychain certs/probcomp.rootCA.pem
 ```
 
-### start the app
+### start the app (in the background)
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 Services are accessible at `https://<SERVICE>.probcomp.dev:8443`
