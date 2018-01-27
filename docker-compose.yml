@@ -1,0 +1,21 @@
+version: "3"
+networks:
+  probcomp:
+volumes:
+  dhparam:
+    driver: local
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy:0.6.0
+    networks:
+      - probcomp
+    environment:
+      CERT_NAME: probcomp.dev
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - dhparam:/etc/nginx/dhparam:rw
+      - ./certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
